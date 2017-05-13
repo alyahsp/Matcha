@@ -1,0 +1,12 @@
+#logo, #signin{
+	display: inline;
+}
+
+#signin{
+	float: right;
+	padding-top: 20px;
+}
+
+#logo{
+	width: 200px;
+}
