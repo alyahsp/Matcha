@@ -2,25 +2,34 @@
 <html>
 	<head>
 		<link rel='stylesheet' href='/css/index.css'>
+		<link rel='stylesheet' href='/css/semantic.min.css'>
 	</head>
 	<body>
-		<div class="">
-			<img id='logo' src='../images/matcha.png'>
-			<form action='/' method='post' id='signin'>
-				<input type='text' name='login' placeholder='Username'>
-				<input type='password' name='password' placeholder='Password'>
-				<input type='submit' name='submit' value='Login'>
+		<div id='header'>
+			<img class="header item" id='logo' src='../images/matcha.png'>
+			<form class="header item" action='/' method='post' id='signin'>
+				<input id='textbox' type='text' name='login' placeholder='Username'>
+				<input id='textbox' type='password' name='password' placeholder='Password'>
+				<input id='textbox' type='submit' name='submit' value='Sign in'>
 			</form>
 		</div>
-		<div>
+		<% if (locals.error) { %>
+		<div class='ui negative message'>
+			<%= locals.error %>
+		</div>
+		<% } %>
+		<div id='signup'>
 			<h1>Sign Up</h1>
-			<form action='/' method='post'>
-				<input type='text' name='login' placeholder='Username'><br/>
-				<input type='email' name='email' placeholder='Email'><br/>
-				<input type='text' name='fname' placeholder='First Name'>
-				<input type='text' name='lname' placeholder='Last Name'><br/>
-				<input type='password' name='password' placeholder='Password'><br/>
-				<input type='submit' name='submit' value='Sign Up'>
+			<form action='/' method='post' >
+				<input id='textbox' type='text' name='fname' placeholder='First Name'>
+				<input id='textbox' type='text' name='lname' placeholder='Last Name'><br/>
+				<input id='textbox' type='number' name='age' min='18' max='99'><br/>
+				<input id='txtbox' type='text' name='login' placeholder='Username'><br/>
+				<input id='txtbox' type='email' name='email' placeholder='Email'><br/>
+				<input id='txtbox' type='password' name='password' placeholder='Password'><br/>
+				<input id='gender' type='radio' name='gender' value='female'><label>Female</label>
+				<input id='gender' type='radio' name='gender' value='male'><label>Male</label><br/>
+				<input id='txtbox' type='submit' name='submit' value='Sign Up'>
 			</form>
 		</div>
 	</body>
