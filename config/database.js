@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/27017:Matcha_DB');
+//connect to db mongodb://localhost/db_name'
+mongoose.connect('mongodb://localhost/Matcha_DB');
 module.exports = mongoose.connection;

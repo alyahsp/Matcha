@@ -1,0 +1,19 @@
+#header{
+	border-bottom: 1px solid rgba(0,0,0,.0975);
+	display: block;
+	background-color: #ffffff;
+}
+
+#logo{
+	margin-left: 3%;
+	width: 200px;
+	height: 93.45px;
+	/*vertical-align: middle;*/
+}
+
+.roundbutton{
+	height: 40px;
+	float: right;
+	vertical-align: middle;
+
+}

@@ -5,7 +5,7 @@ label{
 	font-family: Helvetica, Arial, sans-serif;
 	cursor: pointer;
 }
-
+span{margin-right: 25px;}
 #gender{
 	margin: 10px;
 }
