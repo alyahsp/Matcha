@@ -47,6 +47,7 @@ router.route('/')
 					newUser.save((err) => {
 						if (err) throw err;
 					});
+					req.session.user = newUser.login;
 					res.redirect('/profile');
 				}
 			})
