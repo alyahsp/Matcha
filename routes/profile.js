@@ -5,9 +5,13 @@ router.get('/', (req, res, next)=> {
 	if (req.session.user)
 	{
 		res.locals.user = req.session.user
-		// req.session.user = undefined;
+		res.render('profile')
 	}
-	res.render('profile')
+	else
+	{
+		req.session.error = "Please login to access this page"
+		res.redirect('/')
+	}
 })
 
 module.exports = router;

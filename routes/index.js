@@ -52,10 +52,17 @@ router.route('/')
 				}
 			})
 		}
-		// else if (req.body.submit === 'Sign in')
-		// {
-		//
-		// }
+		else if (req.body.submit === 'Sign in')
+		{
+			User.findOne({$or: [{'email' :  req.body.email }, {'login' : req.body.login}]}, (err, user)=> {
+				if (err) throw err ;
+
+				if (user && user.checkPassword(req.body.password)){					
+					res.redirect('/profile');
+				} else {
+					res.redirect('/');
+				}
+		}
 		console.log(req.body)
 	})
 module.exports = router;
