@@ -9,6 +9,7 @@ var db = require('./config/database');
 
 var index = require('./routes/index');
 var profile = require('./routes/profile');
+var logout = require('./routes/logout');
 
 var app = express();
 
@@ -32,7 +33,7 @@ app.use(session({
 
 //Routes
 app.use('/', index);
-// app.use('/signin', signin);
+app.use('/logout', logout);
 // app.post('/signin', )
 app.use('/profile', profile);
 
