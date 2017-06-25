@@ -7,10 +7,10 @@
 	<body>
 		<div id='header'>
 			<img class="header item" id='logo' src='../images/matcha.png'>
-			<form class="header item" action='/' method='post' id='signin'>
-				<input id='textbox' type='text' name='login' placeholder='Username'>
-				<input id='textbox' type='password' name='password' placeholder='Password'>
-				<input id='textbox' type='submit' name='submit' value='Sign in'>
+			<form class="header item" action='/login' method='post' id='signin'>
+				<input class='textbox' type='text' name='login' placeholder='Username'>
+				<input class='textbox' type='password' name='password' placeholder='Password'>
+				<input class='textbox' id='login' type='submit' name='submit' value='Sign in'>
 			</form>
 		</div>
 		<% if (locals.error) { %>
@@ -20,16 +20,21 @@
 		<% } %>
 		<div id='signup'>
 			<h1>Sign Up</h1>
-			<form action='/' method='post' >
-				<input id='textbox' type='text' name='fname' placeholder='First Name'>
-				<input id='textbox' type='text' name='lname' placeholder='Last Name'><br/>
-				<span>Age:</span><input id='textbox' type='number' name='age' min='18' max='99'><br/>
-				<input id='txtbox' type='text' name='login' placeholder='Username'><br/>
-				<input id='txtbox' type='email' name='email' placeholder='Email'><br/>
-				<input id='txtbox' type='password' name='password' placeholder='Password'><br/>
-				<input id='gender' type='radio' name='gender' value='Female'><label>Female</label>
-				<input id='gender' type='radio' name='gender' value='Male'><label>Male</label><br/>
-				<input id='txtbox' type='submit' name='submit' value='Sign Up'>
+			<form action='/register' method='post' >
+				<input class='textbox' type='text' name='fname' placeholder='First Name'>
+				<input class='textbox' type='text' name='lname' placeholder='Last Name'><br/>
+				<span>Age:</span><input class='textbox' type='number' name='age' min='18' max='99'><br/>
+				<input class='txtbox' type='text' name='login' placeholder='Username'><br/>
+				<input class='txtbox' type='email' name='email' placeholder='Email'><br/>
+				<input class='txtbox' type='password' name='password' placeholder='Password'><br/>
+				<select class='txtbox' name='gender' class="ui dropdown">
+					<option value="">Gender</option>
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
+				</select><br />
+				<!-- <input id='gender' type='radio' name='gender' value='Female'><label>Female</label> -->
+				<!-- <input id='gender' type='radio' name='gender' value='Male'><label>Male</label><br/> -->
+				<input class='txtbox' id='register' type='submit' name='submit' value='Sign Up'>
 			</form>
 		</div>
 	</body>

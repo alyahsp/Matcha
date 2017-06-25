@@ -9,7 +9,7 @@ router.get('/', (req, res, next)=> {
 	}
 	else
 	{
-		req.session.error = "Please login to access this page"
+		// req.session.error = "Please login to access this page"
 		res.redirect('/')
 	}
 })

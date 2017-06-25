@@ -12,15 +12,8 @@ router.get('/', function(req, res, next) {
 	res.render('index');
 });
 
-router.route('/')
-	.post((req, res)=>{
-		if (req.body.submit === 'Sign in' && (req.body.login === undefined ||
-			req.body.login === '' || req.body.password === undefined || req.body.password === ''))
-			{
-				req.session.error = "Wrong login or password";
-				res.redirect('/');
-			}
-		else if (req.body.submit === 'Sign Up' && (req.body.fname === '' ||
+router.post('/register', (req, res, next)=>{
+		if (req.body.submit === 'Sign Up' && (req.body.fname === '' ||
 		req.body.lname === '' || req.body.login === '' || req.body.password === ''))
 			{
 				req.session.error = "Incorrect information";
@@ -52,17 +45,29 @@ router.route('/')
 				}
 			})
 		}
-		else if (req.body.submit === 'Sign in')
-		{
-			User.findOne({$or: [{'email' :  req.body.email }, {'login' : req.body.login}]}, (err, user)=> {
-				if (err) throw err ;
-
-				if (user && user.checkPassword(req.body.password)){					
-					res.redirect('/profile');
-				} else {
-					res.redirect('/');
-				}
-		}
 		console.log(req.body)
 	})
+
+router.post('/login', (req, res, next)=>{
+	if (req.body.submit === 'Sign in' && (req.body.login === undefined ||
+		req.body.login === '' || req.body.password === undefined || req.body.password === ''))
+		{
+			req.session.error = "Wrong login or password";
+			res.redirect('/');
+		}
+	else if (req.body.submit === 'Sign in')
+	{
+		User.findOne({$or: [{'email' :  req.body.email }, {'login' : req.body.login}]}, (err, user)=> {
+			if (err) throw err ;
+
+			if (user && user.checkPassword(req.body.password)){
+				req.session.user = req.body.login
+				res.redirect('/profile')
+			}else{
+				res.redirect('/');
+			}
+		})
+	}
+})
+
 module.exports = router;

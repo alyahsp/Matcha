@@ -6,16 +6,30 @@
 	<title>Profile</title>
 </head>
 <body>
-	<!-- <% if (locals.user){ %> -->
 	<div id='header'>
 		<img class="header item" id='logo' src='../images/matcha.png'>
-		<a href="logout">
-			<img class='roundbutton' src='../images/logout.svg' />
-		</a>
-		<img class='roundbutton' src='../images/connections.svg' />
-		<img class='roundbutton' src='../images/chat.svg' />
-		<img class='roundbutton' src='../images/notifications.svg' />
+		<div class="nav">
+			<img src='../images/connections.svg' />
+			<img src='../images/chat.svg' />
+			<img src='../images/notifications.svg' />
+			<a href="/logout">
+				<img src='../images/logout.svg' />
+			</a>
+		</div>
 	</div>
-	<!-- <% } %> -->
+	<main>
+		<header class="ui container" id='top'>
+			<div>
+				<button id='profilepic'>
+					<img class="ui top aligned small circular image" src="https://scontent-vie1-1.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg"/>
+				</button>
+				<div>
+					<h1>
+						<%= locals.user %>
+					</h1>
+				</div>
+			</div>
+		</header>
+	</main>
 </body>
 </html>
