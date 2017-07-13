@@ -13,6 +13,17 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/register', (req, res, next)=>{
+	var item = {
+		email : req.body.email,
+		login: req.body.login,
+		firstName: req.body.fname,
+		lastName: req.body.lname,
+		bday: req.body.bday,
+		bmonth: req.body.bmonth,
+		byear: req.body.byear,
+		password: User.generateHash(req.body.password),
+		gender: req.body.gender
+	}
 	if (req.body.submit === 'Sign Up' && (req.body.fname === '' ||
 	req.body.lname === '' || req.body.login === '' || req.body.password === ''))
 		{
@@ -21,7 +32,9 @@ router.post('/register', (req, res, next)=>{
 		}
 	else if (req.body.submit === 'Sign Up')
 	{
-		User.addUser(req, res);
+		User.addUser(item);
+		req.session.user = req.body.login;
+		res.redirect('/profile');
 	}
 	// console.log(req.body)
 })

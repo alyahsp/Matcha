@@ -8,8 +8,14 @@
 		<div id='header'>
 			<img class="header item" id='logo' src='../images/matcha.png'>
 			<form class="header item" action='/login' method='post' id='signin'>
-				<input class='textbox' type='text' name='login' placeholder='Username'>
-				<input class='textbox' type='password' name='password' placeholder='Password'>
+				<div class="ui left icon input">
+					<input class='textbox' type='text' name='login' placeholder='Username'>
+					<i class="user icon"></i>
+				</div>
+				<div class="ui left icon input">
+					<input class='textbox' type='password' name='password' placeholder='Password'>
+					<i class="lock icon"></i>
+				</div>
 				<input class='textbox' id='login' type='submit' name='submit' value='Sign in'>
 			</form>
 		</div>
