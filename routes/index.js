@@ -12,57 +12,30 @@ router.get('/', function(req, res, next) {
 	res.render('index');
 });
 
-router.route('/')
-	.post((req, res)=>{
-		if (req.body.submit === 'Sign in' && (req.body.login === undefined ||
-			req.body.login === '' || req.body.password === undefined || req.body.password === ''))
-			{
-				req.session.error = "Wrong login or password";
-				res.redirect('/');
-			}
-		else if (req.body.submit === 'Sign Up' && (req.body.fname === '' ||
-		req.body.lname === '' || req.body.login === '' || req.body.password === ''))
-			{
-				req.session.error = "Incorrect information";
-				res.redirect('/');
-			}
-		else if (req.body.submit === 'Sign Up')
+router.post('/register', (req, res, next)=>{
+	if (req.body.submit === 'Sign Up' && (req.body.fname === '' ||
+	req.body.lname === '' || req.body.login === '' || req.body.password === ''))
 		{
-			User.findOne({$or: [{'email' :  req.body.email }, {'login' : req.body.login}]}, (err, user)=> {
-				if (err) throw err ;
-
-				if (user){
-					req.session.error = "Email or Login already exists";
-					res.redirect('/');
-				} else {
-					var newUser = new User();
-
-					newUser.email = req.body.email;
-					newUser.login = req.body.login;
-					newUser.firstName = req.body.fname;
-					newUser.lastName = req.body.lname;
-					newUser.age = req.body.age;
-					newUser.password = newUser.generateHash(req.body.password);
-					newUser.gender = req.body.gender;
-					newUser.save((err) => {
-						if (err) throw err;
-					});
-					req.session.user = newUser.login;
-					res.redirect('/profile');
-				}
-			})
+			req.session.error = "Incorrect information";
+			res.redirect('/');
 		}
-		else if (req.body.submit === 'Sign in')
+	else if (req.body.submit === 'Sign Up')
+	{
+		User.addUser(req, res);
+	}
+	// console.log(req.body)
+})
+
+router.post('/login', (req, res, next)=>{
+	if (req.body.submit === 'Sign in' && (req.body.login === undefined ||
+		req.body.login === '' || req.body.password === undefined || req.body.password === ''))
 		{
-			User.findOne({$or: [{'email' :  req.body.email }, {'login' : req.body.login}]}, (err, user)=> {
-				if (err) throw err ;
-
-				if (user && user.checkPassword(req.body.password)){					
-					res.redirect('/profile');
-				} else {
-					res.redirect('/');
-				}
+			req.session.error = "Wrong login or password";
+			res.redirect('/');
 		}
-		console.log(req.body)
-	})
+	else if (req.body.submit === 'Sign in')
+	{
+		User.checkUser(req, res)
+	}
+})
 module.exports = router;

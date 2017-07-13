@@ -1,19 +1,84 @@
-#header{
-	border-bottom: 1px solid rgba(0,0,0,.0975);
-	display: block;
-	background-color: #ffffff;
-}
+/*main {*/
+	/*background-color: #fafafa;*/
+	/*margin: 0;*/
+	/*margin-top: 40px;*/
+/*}*/
 
 #logo{
 	margin-left: 3%;
-	width: 200px;
-	height: 93.45px;
+	width: auto;
+	height: 50px;
+	/*display: inline;*/
+	/*padding: .92857143em 1.14285714em;*/
 	/*vertical-align: middle;*/
 }
 
-.roundbutton{
-	height: 45px;
-	float: right;
-	vertical-align: middle;
+#top{
+	padding-top: 40px;
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+}
 
+#profile {
+	margin-right: 30px;
+	border-radius: 50%;
+	height: 150px;
+	width: 150px;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.nav{
+	float: right;
+	margin-top: 10px;
+	margin-right: 20px;
+}
+
+.nav img{
+	height: 45px;
+}
+
+.name, .orientation, .score{
+	display: flex;
+}
+
+.name a button {
+	/*vertical-align: bottom;*/
+	margin-left: 80px;
+}
+
+.name {
+	font-size: 1.3em;
+}
+.orientation {
+	line-height: 2.4;
+}
+
+.score {
+	font-size: 1.2em;
+}
+
+form div{
+	display: flex;
+	vertical-align: middle;
+}
+form div label{
+	margin-right: 30px;
+	width: 80px;
+	line-height: 3;
+	/*text-align: right;*/
+}
+
+form div input, textarea{
+	/*height: 32px;*/
+	min-width:100px;
+	max-width: 300px;
+	vertical-align: middle;
+}
+
+.picture {
+	width: 23%;
+	margin-right: 1%;
+	/*margin-bottom: 1%;*/
 }

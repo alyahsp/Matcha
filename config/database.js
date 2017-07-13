@@ -1,5 +1,16 @@
-var mongoose = require('mongoose');
+var mongodb = require('mongodb');
 
+var MongoClient = mongodb.MongoClient;
 //connect to db mongodb://localhost/db_name'
-mongoose.connect('mongodb://localhost/Matcha_DB');
-module.exports = mongoose.connection;
+var url = 'mongodb://localhost:27017/Matcha_DB';
+
+let connect = MongoClient.connect(url, (err, db)=>{
+	return new Promise((resolve, reject) => {
+		if (err){
+			reject(err);
+		}else{
+			resolve(db);
+		}
+	})
+})
+module.exports = connect;

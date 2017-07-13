@@ -30,11 +30,11 @@ span{margin-right: 25px;}
 
 #logo{
 	margin-left: 3%;
-	width: 200px;
-	height: 93.45px;
+	width: auto;
+	height: 80px;
 }
 
-#textbox{
+.textbox{
 	margin-bottom: 3px;
 	font-size: 14px;
 	padding:9px 8px 7px;
@@ -42,7 +42,16 @@ span{margin-right: 25px;}
 	border-radius: 3px;
 }
 
-#txtbox{
+#bdaybox{
+	margin-bottom: 3px;
+	width: 111px;
+	font-size: 14px;
+	padding:9px 8px 7px;
+	border:1px solid #dbdbdb;
+	border-radius: 3px;
+}
+
+.txtbox{
 	margin-bottom: 3px;
 	width: 334px;
 	font-size: 14px;

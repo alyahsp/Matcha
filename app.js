@@ -5,12 +5,22 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var db = require('./config/database');
+// var db = require('./config/database');
 
 var index = require('./routes/index');
 var profile = require('./routes/profile');
+var logout = require('./routes/logout');
 
 var app = express();
+
+// db().then(
+// 	(database) => {
+// 		//here the traitement
+// 	}
+// ).catch((error) => {
+// 	console.error(error);
+// 	throw(error);
+// })
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
