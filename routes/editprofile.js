@@ -5,7 +5,7 @@ router.get('/', (req, res, next)=> {
 	if (req.session.user)
 	{
 		res.locals.user = req.session.user
-		res.render('profile', {title: 'Profile'})
+		res.render('profile', {title: 'Edit Profile'})
 	}
 	else
 	{

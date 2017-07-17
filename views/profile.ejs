@@ -1,146 +1,56 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel='stylesheet' href='./css/profile.css'>
-	<link rel='stylesheet' href='./css/semantic.min.css'>
-	<link rel='stylesheet' href='./css/main.css' />
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Profile</title>
-</head>
-<body>
-	<header id="header">
-		<img class="header item" id='logo' src='./images/matcha.png'>
-		<nav class="links">
-			<ul>
-				<li><a href="#">Profile</a></li>
-				<li><a href="#">Chat</a></li>
-				<li><a href="#">Notifications</a><label> 0</label></li>
-				<li><a href="#">Logout</a></li>
-			</ul>
-		</nav>
-		<nav class="main">
-			<ul>
-				<li class="search">
-					<a class="fa-search" href="#search">Search</a>
-					<form id="search" method="get" action="#">
-						<input type="text" name="query" placeholder="Search" />
-					</form>
-				</li>
-				<li class="menu">
-					<a class="fa-bars" href="#menu">Menu</a>
-				</li>
-			</ul>
-		</nav>
-	</header>
-	<section id="menu">
-
-		<!-- Search -->
-			<section>
-				<form class="search" method="get" action="#">
-					<input type="text" name="query" placeholder="Search" />
-				</form>
-			</section>
-
-		<!-- Links -->
-			<section>
-				<ul class="links">
-					<li>
-						<a href="#">
-							<h3>Profile</h3>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<h3>Chat</h3>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<h3>Notifications</h3>
-						</a>
-					</li>
-				</ul>
-			</section>
-
-		<!-- Actions -->
-			<section>
-				<ul class="actions vertical">
-					<li><a href="#" class="button big fit">Logout</a></li>
-				</ul>
-			</section>
-
-	</section>
-	<div>
-		<section id='top'>
-			<div class="ui items">
-				<div class="item">
-					<!-- <button> -->
-					<div id='profile'>
-						<img class='ui medium circular image' src="https://cdn.intra.42.fr/users/medium_lvalenti.jpg"/>
-					</div>
-					<!-- </button> -->
-					<div class="content">
-						<div class='name'>
-				  			<p>
-								<h1> lvalenti </h1>
-								<h1>, 21</h1>
-								<h1> ♂</h1>
-							</p>
-							<a href='/edit'>
-								<button>Edit profile</button>
-							</a>
-						</div>
-						<div class="orientation">
-							<h2>Interested in: Girls</h2>
-						</div>
-						<div class="score">
-							<h3>Score: 7.8</h3>
-						</div>
-					</div>
-				</div>
+<% extend('layout') %>
+<section id='top'>
+	<div class="ui items">
+		<div class="item">
+			<!-- <button> -->
+			<div id='profile'>
+				<img class='ui medium circular image' src="https://cdn.intra.42.fr/users/medium_lvalenti.jpg"/>
 			</div>
-		</section>
-		<section id='top'>
-			<div>
-				<h1>Ludwig Valentin</h1>
-				<p>
-					I'm all about mangas and cool stuff like that. The type of guy you would want your parents to meet. Don't forget to like ;)
-				</p>
-				<img class='picture' src='https://scontent-cdg2-1.cdninstagram.com/t51.2885-15/e35/16110482_776345915848356_5698877480975204352_n.jpg'/>
-				<img class='picture' src='https://scontent-cdg2-1.cdninstagram.com/t51.2885-15/e35/16110482_776345915848356_5698877480975204352_n.jpg'/>
-				<img class='picture' src='https://scontent-cdg2-1.cdninstagram.com/t51.2885-15/e35/16110482_776345915848356_5698877480975204352_n.jpg'/>
-				<img class='picture' src='https://scontent-cdg2-1.cdninstagram.com/t51.2885-15/e35/16110482_776345915848356_5698877480975204352_n.jpg'/>
-			</div>
-		</section>
-		<section id='top'>
-			<div>
-				<h1>Interests</h1>
-				<div class="ui blue labels">
-					<a class="ui label">
-						#Fun
-					</a>
-					<a class="ui label">
-						#42
-					<div class="detail">22</div>
+			<!-- </button> -->
+			<div class="content">
+				<div class='name'>
+		  			<p>
+						<h1> lvalenti </h1>
+						<h1>, 21</h1>
+						<h1> ♂</h1>
+					</p>
+					<a href='/edit'>
+						<button>Edit profile</button>
 					</a>
 				</div>
+				<div class="orientation">
+					<h2>Interested in: Girls</h2>
+				</div>
+				<div class="score">
+					<h3>Score: 7.8</h3>
+				</div>
 			</div>
-		</section>
-		<hr>
-		<section id="footer">
-			<p class="copyright"> spalmaro </p>
-		</section>
+		</div>
 	</div>
-
-
-	<!-- Scripts -->
-		<script src="./js/jquery.min.js"></script>
-		<script src="./js/skel.min.js"></script>
-		<script src="./js/util.js"></script>
-		<!--[if lte IE 8]><script src="./js/ie/respond.min.js"></script><![endif]-->
-		<script src="./js/main.js"></script>
-
-</body>
-
-</html>
+</section>
+<section id='top'>
+	<div>
+		<h1>Ludwig Valentin</h1>
+		<p>
+			I'm all about mangas and cool stuff like that. The type of guy you would want your parents to meet. Don't forget to like ;)
+		</p>
+		<img class='picture' src='https://scontent-cdg2-1.cdninstagram.com/t51.2885-15/e35/16110482_776345915848356_5698877480975204352_n.jpg'/>
+		<img class='picture' src='https://scontent-cdg2-1.cdninstagram.com/t51.2885-15/e35/16110482_776345915848356_5698877480975204352_n.jpg'/>
+		<img class='picture' src='https://scontent-cdg2-1.cdninstagram.com/t51.2885-15/e35/16110482_776345915848356_5698877480975204352_n.jpg'/>
+		<img class='picture' src='https://scontent-cdg2-1.cdninstagram.com/t51.2885-15/e35/16110482_776345915848356_5698877480975204352_n.jpg'/>
+	</div>
+</section>
+<section id='top'>
+	<div>
+		<h1>Interests</h1>
+		<div class="ui blue labels">
+			<a class="ui label">
+				#Fun
+			</a>
+			<a class="ui label">
+				#42
+			<div class="detail">22</div>
+			</a>
+		</div>
+	</div>
+</section>
