@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../models/user');
+var User = require('../models/User');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -11,6 +11,18 @@ router.get('/', function(req, res, next) {
 	}
 	res.render('index');
 });
+
+router.post('/register', (req, res, next)=>{
+	if ((req.body.fname === '' || req.body.lname === '' ||
+	req.body.login === '' || req.body.password === '' || req.body.password))
+	{
+		req.session.error = "Incorrect information";
+		res.redirect('/');
+		return
+	}
+	next()
+	// console.log(req.body)
+})
 
 router.post('/register', (req, res, next)=>{
 	var item = {
@@ -24,18 +36,9 @@ router.post('/register', (req, res, next)=>{
 		password: User.generateHash(req.body.password),
 		gender: req.body.gender
 	}
-	if (req.body.submit === 'Sign Up' && (req.body.fname === '' ||
-	req.body.lname === '' || req.body.login === '' || req.body.password === ''))
-		{
-			req.session.error = "Incorrect information";
-			res.redirect('/');
-		}
-	else if (req.body.submit === 'Sign Up')
-	{
-		User.addUser(item);
-		req.session.user = req.body.login;
-		res.redirect('/profile');
-	}
+	User.addUser(item);
+	req.session.user = req.body.login;
+	res.redirect('/profile');
 	// console.log(req.body)
 })
 

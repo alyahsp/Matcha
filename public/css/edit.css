@@ -32,20 +32,31 @@
 	margin-right: auto;
 }
 
+#bdaybox{
+	width: 100px;
+	height : 44px;
+}
+
+
+#submit{
+	margin-top: 20px;
+	/*margin-left: auto;*/
+	/*margin-right: auto;*/
+}
 form div{
 	display: flex;
 	vertical-align: middle;
 }
 form div label{
 	margin-right: 30px;
-	width: 80px;
+	width: 85px;
 	line-height: 3;
 	/*text-align: right;*/
 }
 
 form div input, textarea, form div select{
-	/*height: 32px;*/
-	min-width:100px;
+	/*height: 44px;*/
+	/*min-width:100px;*/
 	max-width: 300px;
 	vertical-align: middle;
 }
