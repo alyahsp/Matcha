@@ -1,4 +1,4 @@
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 var mongodb = require('mongodb').MongoClient;
 var assert = require('assert')
 
@@ -30,25 +30,26 @@ var addUser = (item) => {
 	})
 }
 
-var checkUser = (req, res) => {
-	mongodb.connect(url, (err, db)=>{
-		assert.equal(null, err)
-		db.collection('users').findOne({$or: [{'email' :  req.body.email }, {'login' : req.body.login}]}, (err, result)=> {
-			assert.equal(null, err)
-			console.log(req.body.password)
-			if (result && checkPassword(req.body.password)){
-				req.session.user = req.body.login;
-				res.redirect('/profile');
-			} else {
-				res.redirect('/');
-			}
-			db.close();
-		})
-	})
-}
+// var checkUser = (req, res) => {
+// 	mongodb.connect(url, (err, db)=>{
+// 		assert.equal(null, err)
+// 		db.collection('users').findOne({$or: [{'email' :  req.body.email }, {'login' : req.body.login}]}, (err, result)=> {
+// 			assert.equal(null, err)
+// 			console.log(req.body.password)
+// 			if (result && checkPassword(req.body.password)){
+// 				req.session.user = req.body.login;
+// 				res.redirect('/profile');
+// 			} else {
+// 				res.redirect('/');
+// 			}
+// 			db.close();
+// 		})
+// 	})
+// }
 
 module.exports = {
-	'generateHash' : generateHash,
-	'addUser'	: addUser,
-	'checkUser'	: checkUser
+	'generateHash'	: generateHash,
+	'addUser'		: addUser,
+	// 'checkUser'		: checkUser,
+	'checkPassword'	: checkPassword
 };

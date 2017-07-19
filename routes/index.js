@@ -1,6 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var User = require('../models/User');
+const express = require('express');
+const router = express.Router();
+const User = require('../models/User');
+const database = require('../config/database')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -25,7 +26,7 @@ router.post('/register', (req, res, next)=>{
 })
 
 router.post('/register', (req, res, next)=>{
-	var item = {
+	let item = {
 		email : req.body.email,
 		login: req.body.login,
 		firstName: req.body.fname,
@@ -42,16 +43,31 @@ router.post('/register', (req, res, next)=>{
 	// console.log(req.body)
 })
 
-router.post('/login', (req, res, next)=>{
-	if (req.body.submit === 'Sign in' && (req.body.login === undefined ||
-		req.body.login === '' || req.body.password === undefined || req.body.password === ''))
-		{
-			req.session.error = "Wrong login or password";
-			res.redirect('/');
-		}
-	else if (req.body.submit === 'Sign in')
-	{
-		User.checkUser(req, res)
+router.post('/login', async (req, res, next)=>{
+	let db = await database.connect();
+	let result = await db.collection('users').findOne({$or: [{'email' :  req.body.email }, {'login' : req.body.login }]})
+
+	if (result && User.checkPassword(req.body.password)){
+		req.session.user = req.body.login;
+		res.redirect('/profile');
 	}
+	else if (result){
+		req.session.error = 'Wrong Password'
+		res.redirect('/');
+	}
+	else {
+		req.session.error = 'Login is not found'
+		res.redirect('/');
+	}
+	// if (req.body.submit === 'Sign in' && (req.body.login === undefined ||
+	// 	req.body.login === '' || req.body.password === undefined || req.body.password === ''))
+	// 	{
+	// 		req.session.error = "Wrong login or password";
+	// 		res.redirect('/');
+	// 	}
+	// else if (req.body.submit === 'Sign in')
+	// {
+	// 	User.checkUser(req, res)
+	// }
 })
 module.exports = router;
