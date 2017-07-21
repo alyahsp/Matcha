@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcrypt-nodejs');
 const User = require('../models/User');
 const database = require('../config/database')
 
@@ -15,10 +16,11 @@ router.get('/', function(req, res, next) {
 
 router.post('/register', (req, res, next)=>{
 	if ((req.body.fname === '' || req.body.lname === '' ||
-	req.body.login === '' || req.body.password === '' || req.body.password))
+	req.body.login === '' || req.body.password === ''))
 	{
 		req.session.error = "Incorrect information";
 		res.redirect('/');
+		console.log(req.body)
 		return
 	}
 	next()
@@ -31,23 +33,24 @@ router.post('/register', (req, res, next)=>{
 		login: req.body.login,
 		firstName: req.body.fname,
 		lastName: req.body.lname,
+		// age: getAge(req.body.byear + '-' + req.body.bmonth + '-' + req.body.bday),
 		bday: req.body.bday,
 		bmonth: req.body.bmonth,
 		byear: req.body.byear,
-		password: User.generateHash(req.body.password),
-		gender: req.body.gender
+		password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8)),
+		gender: req.body.gender,
+		orientation: 'both'
 	}
 	User.addUser(item);
 	req.session.user = req.body.login;
-	res.redirect('/profile');
-	// console.log(req.body)
+	res.redirect('/edit');
 })
 
 router.post('/login', async (req, res, next)=>{
 	let db = await database.connect();
 	let result = await db.collection('users').findOne({$or: [{'email' :  req.body.email }, {'login' : req.body.login }]})
 
-	if (result && User.checkPassword(req.body.password)){
+	if (result && bcrypt.compareSync(req.body.password, result['password'])){
 		req.session.user = req.body.login;
 		res.redirect('/profile');
 	}

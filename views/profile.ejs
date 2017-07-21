@@ -12,14 +12,18 @@
 		  			<p>
 						<h1><%= locals.user%></h1>
 						<h1>, 21</h1>
-						<h1> ♂</h1>
+						<% if (gender == 'Male'){%>
+							<h1> ♂</h1>
+						<% } else {%>
+							<h1> ♀</h1>
+						<% } %>
 					</p>
 					<a href='/edit'>
 						<button>Edit profile</button>
 					</a>
 				</div>
 				<div class="orientation">
-					<h2>Interested in: Girls</h2>
+					<h2>Interested in: <%= orientation%></h2>
 				</div>
 				<div class="score">
 					<h3>Score: 7.8</h3>
@@ -30,10 +34,12 @@
 </section>
 <section id='top'>
 	<div>
-		<h1>Ludwig Valentin</h1>
-		<p>
-			I'm all about mangas and cool stuff like that. The type of guy you would want your parents to meet. Don't forget to like ;)
-		</p>
+		<h1><%= firstName + ' ' + lastName%></h1>
+		<% if (bio) {%>
+			<p>
+				bio
+			</p>
+		<% } %>
 		<img class='picture' src='https://scontent-cdg2-1.cdninstagram.com/t51.2885-15/e35/16110482_776345915848356_5698877480975204352_n.jpg'/>
 		<img class='picture' src='https://scontent-cdg2-1.cdninstagram.com/t51.2885-15/e35/16110482_776345915848356_5698877480975204352_n.jpg'/>
 		<img class='picture' src='https://scontent-cdg2-1.cdninstagram.com/t51.2885-15/e35/16110482_776345915848356_5698877480975204352_n.jpg'/>
