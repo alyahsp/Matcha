@@ -11,7 +11,7 @@ router.get('/', async (req, res, next)=> {
 	{
 		res.locals.user = req.session.user
 		res.render('home', {
-			title: 'Edit Profile',
+			title: 'Home',
 			css: "<link rel='stylesheet' href='./css/home.css'>",
 			firstName : user['firstName'],
 			lastName : user['lastName'],
@@ -26,7 +26,7 @@ router.get('/', async (req, res, next)=> {
 	}
 	else
 	{
-		req.session.error = "Please login to access this page"
+		req.session.error = "Please Login To Access This Page"
 		res.redirect('/')
 	}
 });

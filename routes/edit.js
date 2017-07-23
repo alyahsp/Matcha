@@ -27,7 +27,7 @@ router.get('/', async (req, res, next)=> {
 	}
 	else
 	{
-		req.session.error = "Please login to access this page"
+		req.session.error = "Please Login To Access This Page"
 		res.redirect('/')
 	}
 })

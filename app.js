@@ -49,6 +49,7 @@ app.use('/', index);
 // app.post('/signin', )
 app.use('/profile', profile);
 app.use('/edit', edit);
+app.use('/home', home);
 app.use('/logout', logout);
 
 // catch 404 and forward to error handler

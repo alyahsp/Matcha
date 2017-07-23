@@ -19,12 +19,13 @@ router.get('/', async (req, res, next)=> {
 			gender : user['gender'],
 			bio: user['bio'],
 			interests: user['interests'],
+			score: user['score'],
 			orientation: user['orientation']
 		})
 	}
 	else
 	{
-		req.session.error = "Please login to access this page"
+		req.session.error = "Please Login To Access This Page"
 		res.redirect('/')
 	}
 })
