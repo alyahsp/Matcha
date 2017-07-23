@@ -10,6 +10,7 @@ var session = require('express-session');
 var index = require('./routes/index');
 var profile = require('./routes/profile');
 var edit = require('./routes/edit');
+var home = require('./routes/home');
 var logout = require('./routes/logout');
 
 var app = express();

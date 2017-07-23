@@ -48,6 +48,7 @@ router.post('/', (req, res, next)=>{
 	}
 	console.log(req.body)
 	User.updateUser(item, req.session.user)
+	req.session.user = req.body.login
 	res.redirect('/profile')
 })
 module.exports = router;
