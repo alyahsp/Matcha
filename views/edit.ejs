@@ -10,15 +10,15 @@
 		<form class='ui form' action='/edit' method='post'>
 			<div>
 				<label>First Name</label>
-				<input maxlength="15" type='text' value="<%= firstName%>"/>
+				<input name='fname' maxlength="15" type='text' value="<%= firstName%>"/>
 			</div>
 			<div>
 				<label>Last Name</label>
-				<input maxlength="15"type='text' value="<%= lastName%>"/>
+				<input name='lname' maxlength="15"type='text' value="<%= lastName%>"/>
 			</div>
 			<div>
 				<label>Login</label>
-				<input maxlength="15" type='text' value="<%= locals.user %>"/>
+				<input name='login' maxlength="15" type='text' value="<%= locals.user %>"/>
 			</div>
 			<div>
 				<label>Birthday</label>
@@ -52,11 +52,11 @@
 						%>
 					</select>
 				<!-- </div> -->
-				<input type="text" name="birthyear" maxlength="4" placeholder="Year" value="<%= byear%>" id='bdaybox'>
+				<input type="text" name="byear" maxlength="4" placeholder="Year" value="<%= byear%>" id='bdaybox'>
 			</div>
 			<div>
 				<label>Email</label>
-				<input type='text' value="<%= email%>"/>
+				<input name='email' type='text' value="<%= email%>"/>
 			</div>
 			<div>
 				<label>Gender</label>
@@ -68,14 +68,14 @@
 			<div>
 				<label>Interested in</label>
 				<select name='orientation' class="ui dropdown">
-					<option value="Both" <%= orientation == 'both' ? 'selected' : '' %>>Both</option>
-					<option value="Male" <%= orientation == 'Male' ? 'selected' : '' %>>Male</option>
-					<option value="Female" <%= orientation == 'Female' ? 'selected' : '' %>>Female</option>
+					<option value="Both" <%= orientation == 'Both' ? 'selected' : '' %>>Both</option>
+					<option value="Guys" <%= orientation == 'Guys' ? 'selected' : '' %>>Guys</option>
+					<option value="Girls" <%= orientation == 'Girls' ? 'selected' : '' %>>Girls</option>
 				</select>
 			</div>
 			<div>
 				<label>Bio</label>
-				<textarea id='bio'></textarea>
+				<textarea name=bio id='bio'><%= bio%></textarea>
 			</div>
 			<button id='submit' type='submit'>Submit Changes</button>
 		</form>

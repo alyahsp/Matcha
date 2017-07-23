@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt-nodejs');
 const User = require('../models/User');
 const database = require('../config/database')
+const getAge = require('get-age')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -33,13 +34,13 @@ router.post('/register', (req, res, next)=>{
 		login: req.body.login,
 		firstName: req.body.fname,
 		lastName: req.body.lname,
-		// age: getAge(req.body.byear + '-' + req.body.bmonth + '-' + req.body.bday),
+		age: getAge(req.body.byear + '-' + req.body.bmonth + '-' + req.body.bday),
 		bday: req.body.bday,
 		bmonth: req.body.bmonth,
 		byear: req.body.byear,
 		password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8)),
 		gender: req.body.gender,
-		orientation: 'both'
+		orientation: 'Both'
 	}
 	User.addUser(item);
 	req.session.user = req.body.login;

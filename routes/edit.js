@@ -1,6 +1,8 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 const database = require('../config/database')
+const User = require('../models/User')
+const getAge = require('get-age')
 
 router.get('/', async (req, res, next)=> {
 	let db = await database.connect()
@@ -31,6 +33,21 @@ router.get('/', async (req, res, next)=> {
 })
 
 router.post('/', (req, res, next)=>{
-
+	let item = {
+		firstName: req.body.fname,
+		lastName: req.body.lname,
+		login: req.body.login,
+		age: getAge(req.body.byear + '-' + req.body.bmonth + '-' + req.body.bday),
+		bday: req.body.bday,
+		bmonth: req.body.bmonth,
+		byear: req.body.byear,
+		email : req.body.email,
+		gender: req.body.gender,
+		orientation: req.body.orientation,
+		bio: req.body.bio
+	}
+	console.log(req.body)
+	User.updateUser(item, req.session.user)
+	res.redirect('/profile')
 })
 module.exports = router;

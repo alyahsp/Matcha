@@ -15,6 +15,7 @@ router.get('/', async (req, res, next)=> {
 			css : "<link rel='stylesheet' href='./css/profile.css'>",
 			firstName : user['firstName'],
 			lastName : user['lastName'],
+			age: user['age'],
 			gender : user['gender'],
 			bio: user['bio'],
 			interests: user['interests'],

@@ -10,8 +10,7 @@
 			<div class="content">
 				<div class='name'>
 		  			<p>
-						<h1><%= locals.user%></h1>
-						<h1>, 21</h1>
+						<h1><%= locals.user + ', ' +  age%></h1>
 						<% if (gender == 'Male'){%>
 							<h1> ♂</h1>
 						<% } else {%>
@@ -37,7 +36,7 @@
 		<h1><%= firstName + ' ' + lastName%></h1>
 		<% if (bio) {%>
 			<p>
-				bio
+				<%= bio%>
 			</p>
 		<% } %>
 		<img class='picture' src='https://scontent-cdg2-1.cdninstagram.com/t51.2885-15/e35/16110482_776345915848356_5698877480975204352_n.jpg'/>

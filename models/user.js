@@ -1,15 +1,26 @@
-var mongodb = require('mongodb').MongoClient;
-var assert = require('assert')
+const mongodb = require('mongodb').MongoClient;
+const assert = require('assert')
 
-var url = 'mongodb://localhost:27017/Matcha_DB';
+const url = 'mongodb://localhost:27017/Matcha_DB';
 
 
-var addUser = (item) => {
+const addUser = (item) => {
 	mongodb.connect(url, (err, db)=>{
 		assert.equal(null, err)
 		db.collection('users').insertOne(item, (err, result)=>{
 			assert.equal(null, err)
 			console.log('User Inserted')
+			db.close()
+		})
+	})
+}
+
+const updateUser = (item, login) => {
+	mongodb.connect(url, (err, db)=>{
+		assert.equal(null, err)
+		db.collection('users').updateOne({'login': login}, item, {upsert: true}, (err, result)=>{
+			assert.equal(null, err)
+			console.log('User Updated')
 			db.close()
 		})
 	})
@@ -66,6 +77,7 @@ var addUser = (item) => {
 module.exports = {
 	// 'generateHash'	: generateHash,
 	'addUser'		: addUser,
+	'updateUser'	: updateUser
 	// 'checkUser'		: checkUser,
 	// 'checkPassword'	: checkPassword
 };
