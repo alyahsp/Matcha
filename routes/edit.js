@@ -36,7 +36,6 @@ router.post('/', (req, res, next)=>{
 	let item = {
 		firstName: req.body.fname,
 		lastName: req.body.lname,
-		login: req.body.login,
 		age: getAge(req.body.byear + '-' + req.body.bmonth + '-' + req.body.bday),
 		bday: req.body.bday,
 		bmonth: req.body.bmonth,
@@ -48,7 +47,6 @@ router.post('/', (req, res, next)=>{
 	}
 	console.log(req.body)
 	User.updateUser(item, req.session.user)
-	req.session.user = req.body.login
 	res.redirect('/profile')
 })
 module.exports = router;

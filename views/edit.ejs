@@ -1,4 +1,9 @@
 <% extend('layout') %>
+<% if (locals.error) { %>
+	<div class='ui negative message'>
+		<%= locals.error %>
+	</div>
+<% } %>
 <div>
 	<section id='top'>
 		<div id='smallprofile'>
@@ -15,10 +20,6 @@
 			<div>
 				<label>Last Name</label>
 				<input name='lname' maxlength="15"type='text' value="<%= lastName%>"/>
-			</div>
-			<div>
-				<label>Login</label>
-				<input name='login' maxlength="15" type='text' value="<%= locals.user %>"/>
 			</div>
 			<div>
 				<label>Birthday</label>

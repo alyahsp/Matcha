@@ -18,7 +18,7 @@ const addUser = (item) => {
 const updateUser = (item, login) => {
 	mongodb.connect(url, (err, db)=>{
 		assert.equal(null, err)
-		db.collection('users').updateOne({'login': login}, item, {upsert: true}, (err, result)=>{
+		db.collection('users').update({'login': login}, { $set: item }, (err, result)=>{
 			assert.equal(null, err)
 			console.log('User Updated')
 			db.close()

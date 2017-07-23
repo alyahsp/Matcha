@@ -16,10 +16,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/register', (req, res, next)=>{
-	if ((req.body.fname === '' || req.body.lname === '' ||
-	req.body.login === '' || req.body.password === ''))
+	if ((req.body.fname === '' || req.body.lname === '' || req.body.login === ''
+	|| req.body.password === '' || req.body.gender === ''|| req.body.bday === ''
+	|| req.body.bmonth === '' || req.body.byear === ''))
 	{
-		req.session.error = "Incorrect information";
+		req.session.error = "Fields Cannot Be Empty";
 		res.redirect('/');
 		console.log(req.body)
 		return
@@ -40,7 +41,15 @@ router.post('/register', (req, res, next)=>{
 		byear: req.body.byear,
 		password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8)),
 		gender: req.body.gender,
-		orientation: 'Both'
+		orientation: 'Both',
+		bio: '',
+		location: '',
+		lastConnected: '',
+		score: 10.00,
+		interests: [],
+		liked: [],
+		photos: [],
+		disliked: []
 	}
 	User.addUser(item);
 	req.session.user = req.body.login;
@@ -60,7 +69,7 @@ router.post('/login', async (req, res, next)=>{
 		res.redirect('/');
 	}
 	else {
-		req.session.error = 'Login is not found'
+		req.session.error = 'Login Is Not Found'
 		res.redirect('/');
 	}
 	// if (req.body.submit === 'Sign in' && (req.body.login === undefined ||
